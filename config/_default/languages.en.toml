@@ -1,0 +1,25 @@
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Blowfish"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  # logo = "img/logo.png"
+  # secondaryLogo = "img/secondary-logo.png"
+  # description = "My awesome website"
+  # copyright = "Copy, _right?_ :thinking_face:"
+
+[author]
+   name = "Janik"
+   image = "profile.JPG"
+   headline = "I'm only human"
+   bio = "A little bit about you"
+   links = [
+     { email = "mailto:janik.bischoff@icloud.com" },
+     { github = "https://github.com/j4n1k" },
+     { medium = "https://medium.com/beware" },
+  ]
