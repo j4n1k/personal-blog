@@ -37,7 +37,7 @@ build_and_preview:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLOWFISH_TUTORIAL }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PERSONAL_BLOG_84ECE }}'
           expires: 30d
           channelId: preview-${{ github.event.number }}
           projectId: personal-blog-84ece
