@@ -84,13 +84,13 @@ defaultBackgroundImage = "background2.jpg" # used as default for background imag
   cardViewScreenWidth = false
 
 [firebase]
-  apiKey: "AIzaSyCNLpGNi9srkQZHhkVOkrjeU5Y4zWpMUog"
-  authDomain: "personal-blog-84ece.firebaseapp.com"
-  projectId: "personal-blog-84ece"
-  storageBucket: "personal-blog-84ece.appspot.com"
-  messagingSenderId: "868065361109"
-  appId: "1:868065361109:web:efa22edb0e869beb02b65c"
-  measurementId: "G-Z0JNV94BHR"
+  apiKey = "AIzaSyCNLpGNi9srkQZHhkVOkrjeU5Y4zWpMUog"
+  authDomain = "personal-blog-84ece.firebaseapp.com"
+  projectId = "personal-blog-84ece"
+  storageBucket = "personal-blog-84ece.appspot.com"
+  messagingSenderId = "868065361109"
+  appId = "1:868065361109:web:efa22edb0e869beb02b65c"
+  measurementId = "G-Z0JNV94BHR"
 
 [fathomAnalytics]
   # site = "ABC12345"
