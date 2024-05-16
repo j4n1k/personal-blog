@@ -1,7 +1,7 @@
 languageCode = "en"
 languageName = "English"
 weight = 1
-title = "Blowfish"
+title = "Janik"
 
 [params]
   displayName = "EN"
@@ -16,10 +16,11 @@ title = "Blowfish"
 [author]
    name = "Janik"
    image = "profile.JPG"
-   headline = "I'm only human"
-   bio = "A little bit about you"
+   headline = "Research associate / PhD candidate at [KIT](https://www.kit.edu/english/index.php)"
+   bio = "Research associate / PhD candidate at [KIT](https://www.kit.edu/english/index.php)"
    links = [
-     { email = "mailto:janik.bischoff@icloud.com" },
+     { email = "mailto:janikbischoff@icloud.com" },
      { github = "https://github.com/j4n1k" },
-     { medium = "https://medium.com/beware" },
+     { medium = "https://medium.com/@beware-sim" },
+     { linkedin = "https://www.linkedin.com/in/janik-b-996a5617b/"}
   ]
