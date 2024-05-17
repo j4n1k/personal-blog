@@ -73,8 +73,7 @@ The layout matrix is transformed into a graph representation that is used to cal
 ### Data Preperation
 Finding item-to-storage location assignments requires historical order data. From this data, information such as item order frequencies or item affinity is calculated. For our toy problem it is sufficient to generate the data ourselves. In reality order data can be retrieved from a WMS or online sources like Kaggle.
 
-In this example we will consider a warehouse where there is an item stored at every storage locations. Therefore the number of storage locations and the number of items is equal.
-Now we can generate the affinity between the items. We set the maximum affinity to 9, that means the highest value two items can be ordered together is 9. Then we loop though all the items and randomly select a value for the affinity.
+We first generate the affinity between the items in storage. We set the maximum affinity to 9, that means the highest value two items can be ordered together is 9. Then we loop though all the items and randomly select a value for the affinity.
 
 ```python
 size = len(warehouse.storage_locs)
@@ -89,22 +88,42 @@ for i in range(size):
         else:
             product_pairs_frequency[i][j] = random.randrange(0, upper_bound)
 ```
+In this example we consider a warehouse where there is an item stored at every storage locations. Therefore the number of storage locations and the number of items is equal.
+The output will be an array like this:
+```python
+[0., 1., 1., 4., 0., 0.],
+[5., 0., 5., 3., 3., 4.],
+[6., 1., 0., 6., 6., 7.],
+[3., 5., 5., 0., 4., 3.],
+[4., 0., 0., 7., 0., 6.],
+[8., 4., 6., 7., 7., 0.] 
+```
 
-The item order frequency can now be determined by going through the product\_pairs\_frequency matrix for every item.
+We can retrieve the affinity of two items by indexing the matrix with the item indices:
+```python
+print(product_pairs_frequency[0][3])
+4
+```
+Item 0 and 3 have been ordered 4 times together!
+
+In addition to the product affinity we also need to know how often each item was odered historically.
+This can now be determined by going through the product\_pairs\_frequency matrix for every item.
 
 ```python
 product_frequency = {}
 for i in range(size):
     product_frequency[i] = product_pairs_frequency[i].sum()
 ```
-This will result in the follwing layout where the black nodes represent walkable locations and the colored nodes represent storage locations. The colors represent the order frequency of the items, with darker colors representing lower order volumes and lighter colors representing higher volumes. Try to hover over the nodes for more information!
+
+To analyze the layout and order data better I plot them as a heatmap. 
+For our exaxmple this results in the follwing heatmap where the black nodes represent walkable locations and the colored nodes represent storage locations. The colors represent the order frequency of the items, with darker colors representing lower order volumes and lighter colors representing higher volumes. Try to hover over the nodes for more information!
 
 {{< load-plotly >}}
 {{< plotly json="layout.json" height="400px" >}}
 
 ## Solving the SLAP
 ### Mixed Integer Programming
-
+Now let's start solving the problem.
 First let us consider the mixed integer programming formulation proposed in the beginning. The model can be formulated like this in Gurobi:
 
 ```python
