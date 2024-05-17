@@ -19,6 +19,40 @@ Warehouse managers face increasing pressures due to rising costs, evolving custo
 The Storage Location Assignment Problem (SLAP) revolves around the allocation of products to storage locations. It depends on various factors, including warehouse characteristics, product types, and demand profiles. This problem shares similarities with the Quadratic Assignment Problem and therefore NP-hard. We will see later what implications that brings for solving the problem. Mathematically, the SLAP can be expressed as follows:
 
 **MIP formulation of the SLAP**
+Sets:
+$$
+I = \text{Items}
+$$
+
+$$
+J = \text{Storage Locations}
+$$
+Parameters:
+$$
+a_{hi} = \text{Affinity between item h and i}
+$$
+
+$$
+d{jk} = \text{Distance between storage location j and k}
+$$
+Variables:
+$$
+y_{h,j} =
+\begin{cases} 
+1 & \text{wenn Artikel } h \text{ an Lagerplatz } j \\
+0 & \text{sonst}
+\end{cases}
+$$
+
+$$
+y_{i,k} =
+\begin{cases} 
+1 & \text{wenn Artikel } i \text{ an Lagerplatz } k \\
+0 & \text{sonst}
+\end{cases}
+$$
+
+Objective function:
 $$
  \min Z = \sum_{h \in I} \sum_{i \in I, i \neq h} \sum_{j \in J} \sum_{k \in J, k \neq j} d_{j,k} \cdot a_{h,i} \cdot y_{i,k} \cdot y_{h,j}
 $$
@@ -91,6 +125,7 @@ for i in range(size):
 In this example we consider a warehouse where there is an item stored at every storage locations. Therefore the number of storage locations and the number of items is equal.
 The output will be an array like this:
 ```python
+print(product_pairs_frequency)
 [0., 1., 1., 4., 0., 0.],
 [5., 0., 5., 3., 3., 4.],
 [6., 1., 0., 6., 6., 7.],
