@@ -19,6 +19,7 @@ Warehouse managers face increasing pressures due to rising costs, evolving custo
 The Storage Location Assignment Problem (SLAP) revolves around the allocation of products to storage locations. It depends on various factors, including warehouse characteristics, product types, and demand profiles. This problem shares similarities with the Quadratic Assignment Problem and therefore NP-hard. We will see later what implications that brings for solving the problem. Mathematically, the SLAP can be expressed as follows:
 
 **MIP formulation of the SLAP**
+
 Sets:
 $$
 I = \text{Items}
