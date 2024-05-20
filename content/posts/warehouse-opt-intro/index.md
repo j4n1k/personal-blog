@@ -1,10 +1,10 @@
 ---
-title: "Optimizing Warehouse Efficiency: The Storage Location Assignment Problem"
-date: 2023-08-14
+title: "Roadmap to Solving the Storage Location Assignment Problem"
+date: 2023-08-13
 draft: false
 summary: ""
 tags: ["optimization", "metaheuristics", "logistics"]
-series: ["Warehouse Optimization"]
+series: ["SLAP"]
 series_order: 1
 ---
 

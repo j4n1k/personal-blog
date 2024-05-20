@@ -1,10 +1,10 @@
 ---
-title: "Optimizing Warehouse Efficiency: The Storage Location Assignment Problem"
+title: "The Storage Location Assignment Problem: A MILP Formulation"
 date: 2023-08-14
 draft: false
 summary: ""
-tags: ["optimization", metaheuristics", "logistics"]
-series: ["Warehouse Optimization"]
+tags: ["optimization", "metaheuristics", "logistics"]
+series: ["SLAP"]
 series_order: 2
 ---
 {{< katex >}}
@@ -40,16 +40,16 @@ Variables:
 $$
 y_{h,j} =
 \begin{cases} 
-1 & \text{wenn Artikel } h \text{ an Lagerplatz } j \\
-0 & \text{sonst}
+1 & \text{if item} h \text{stored in location} j \\
+0 & \text{else}
 \end{cases}
 $$
 
 $$
 y_{i,k} =
 \begin{cases} 
-1 & \text{wenn Artikel } i \text{ an Lagerplatz } k \\
-0 & \text{sonst}
+1 & \text{if item} i \text{stored in location} k \\
+0 & \text{else}
 \end{cases}
 $$
 
