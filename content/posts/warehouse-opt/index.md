@@ -7,6 +7,7 @@ summary: "Explore the complexities of the Storage Location Assignment Problem (S
 tags: ["optimization", "metaheuristics", "logistics", "SLAP", "MILP", "Supply Chain"]
 series: ["SLAP"]
 series_order: 2
+showViews: true
 ---
 {{< katex >}}
 The code for this series is available here:
