@@ -56,7 +56,7 @@ I am a driven Industrial Engineer with a great interest in solving challenging p
 
 **B.Eng Industrial Engineering Production and Logistics**  
 *2018 – 2022*  
-- GPA: 3.7 “very good”
+- GPA: 3.7 
 - Focus on discrete event simulation and intralogistics.
 - Thesis: “Conception and prototypical development of a platform for data stream processing in an industrial context.”
 
