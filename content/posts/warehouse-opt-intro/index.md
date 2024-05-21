@@ -1,6 +1,6 @@
 ---
 title: "Roadmap to Solving the Storage Location Assignment Problem"
-date: 2023-08-13
+date: 2024-05-19
 draft: false
 summary: ""
 tags: ["optimization", "metaheuristics", "logistics"]

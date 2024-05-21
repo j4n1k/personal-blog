@@ -1,7 +1,7 @@
 ---
 title: "The Storage Location Assignment Problem: A MILP Formulation"
 description: "Discover how to optimize warehouse storage with our MILP formulation for the Storage Location Assignment Problem (SLAP). Learn about order picking strategies, mathematical modeling, and efficient item-to-storage assignments to reduce costs and improve logistics."
-date: 2023-08-14
+date: 2024-05-20
 draft: false
 summary: "Explore the complexities of the Storage Location Assignment Problem (SLAP) and how Mixed Integer Linear Programming (MILP) can provide solutions for optimizing warehouse storage. Enhance your logistics strategy with this comprehensive guide."
 tags: ["optimization", "metaheuristics", "logistics", "SLAP", "MILP", "Supply Chain"]
