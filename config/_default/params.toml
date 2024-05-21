@@ -68,7 +68,7 @@ defaultBackgroundImage = "background2.jpg" # used as default for background imag
   # heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
   showBreadcrumbs = false
   showViews = true
-  showLikes = false
+  showLikes = true
   showTableOfContents = false
   cardView = false
 
@@ -77,7 +77,7 @@ defaultBackgroundImage = "background2.jpg" # used as default for background imag
   # heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
   showBreadcrumbs = false
   showViews = true
-  showLikes = false
+  showLikes = true
   showTableOfContents = true
   groupByYear = false
   cardView = false
