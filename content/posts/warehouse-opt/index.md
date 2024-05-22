@@ -18,7 +18,11 @@ Warehouse managers face increasing pressures due to rising costs, evolving custo
 
 ## Understanding the SLAP
 
-The Storage Location Assignment Problem (SLAP) revolves around the allocation of products to storage locations. It depends on various factors, including warehouse characteristics, product types, and demand profiles. This problem shares similarities with the Quadratic Assignment Problem and therefore NP-hard. We will see later what implications that brings for solving the problem. Mathematically, the SLAP can be expressed as follows:
+The Storage Location Assignment Problem (SLAP) revolves around the allocation of products to storage locations. It depends on various factors, including warehouse characteristics, product types, and demand profiles. Often it is aimed to place the products in such a way that products with high demand are placed in the most favorable positions, e.g. close to the input- and output-points where the pickers start end end their picking routes. Solving the SLAP for this objective comes down to sorting the products by historic demand and assigning the item with the highest demand to the storage location that is closest to the I/O-point. This is pretty straight forward and doesn't require advanced methods.
+In this post we want to consider a more challenging problem where we want to assign products in such a way that products that are frequently ordered are placed close to each other. 
+This problem shares similarities with the Quadratic Assignment Problem and is therefore NP-hard. We will see later what implications that brings for solving the problem. 
+
+Mathematically, the SLAP can be expressed as follows:
 
 **MIP formulation of the SLAP**
 
@@ -56,18 +60,23 @@ y_{i,k} =
 $$
 
 Objective function:
+The objective is to minimize the total cost associated with storing items in the warehouse. This cost is typically related to the distance traveled to retrieve items that are frequently used together (i.e., items with high affinity should be stored close to each other).
 $$
  \min Z = \sum_{h \in I} \sum_{i \in I, i \neq h} \sum_{j \in J} \sum_{k \in J, k \neq j} d_{j,k} \cdot a_{h,i} \cdot y_{i,k} \cdot y_{h,j}
 $$
-s.t.
+Constraints:
+Each item is assigned to exactly one location:  
 $$
  \sum_{j \in K} y_{h,j} = 1, \quad \forall h \in I
 $$
 
+Each location holds exactly one item:
 $$
 \sum_{h \in I} y_{h,j} = 1, \quad \forall j \in K
 $$
 
+Binary assignment variables:
+These constraints ensure that the decision variables are binary, meaning that an item is either assigned to a location (1) or not (0).
 $$
 y_{h,j} \in \{0,1\}, \quad \forall h \in I, \forall j \in K
 $$
@@ -254,7 +263,8 @@ options: {
 {{< /chart >}}
 
 
-Given the complexity of SLAP, solving it typically involves heuristics or metaheuristic search methods. Therefore in the next part of this series we will look into a genetic algorithm for solving the SLAP.
+We have shown that due to the NP-hard nature of SLAP, finding an optimal solution within a reasonable time frame is challenging, especially for large-scale problems. This complexity calls for the use of advanced optimization techniques such as heuristic methods, metaheuristic algorithms (e.g., genetic algorithms, simulated annealing), and approximation algorithms. These approaches can provide near-optimal solutions more efficiently compared to exact methods, which may be computationally prohibitive for large instances.
+Therefore in the next part of this series we will look into a genetic algorithm for solving the SLAP.
 
 # References
 \[1\] R. de Koster, T. Le-Duc, and K. J. Roodbergen, “Design and control of warehouse order picking: A literature review,” European Journal of Operational Research, vol. 182, pp. 481–501, Oct. 2007.
