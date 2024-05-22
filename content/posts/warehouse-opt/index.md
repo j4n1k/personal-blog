@@ -18,8 +18,12 @@ Warehouse managers face increasing pressures due to rising costs, evolving custo
 
 ## Understanding the SLAP
 
-The Storage Location Assignment Problem (SLAP) revolves around the allocation of products to storage locations. It depends on various factors, including warehouse characteristics, product types, and demand profiles. Often it is aimed to place the products in such a way that products with high demand are placed in the most favorable positions, e.g. close to the input- and output-points where the pickers start end end their picking routes. Solving the SLAP for this objective comes down to sorting the products by historic demand and assigning the item with the highest demand to the storage location that is closest to the I/O-point. This is pretty straight forward and doesn't require advanced methods.
+The Storage Location Assignment Problem (SLAP) revolves around the allocation of products to storage locations. It depends on various factors, including warehouse characteristics, product types, and demand profiles. 
+
+Often it is aimed to place the products in such a way that products with high demand are placed in the most favorable positions, e.g. close to the input- and output-points where the pickers start end end their picking routes. Solving the SLAP for this objective comes down to sorting the products by historic demand and assigning the item with the highest demand to the storage location that is closest to the I/O-point. This is pretty straight forward and doesn't require advanced methods.
+
 In this post we want to consider a more challenging problem where we want to assign products in such a way that products that are frequently ordered are placed close to each other. 
+
 This problem shares similarities with the Quadratic Assignment Problem and is therefore NP-hard. We will see later what implications that brings for solving the problem. 
 
 Mathematically, the SLAP can be expressed as follows:
@@ -60,11 +64,13 @@ y_{i,k} =
 $$
 
 Objective function:
+
 The objective is to minimize the total cost associated with storing items in the warehouse. This cost is typically related to the distance traveled to retrieve items that are frequently used together (i.e., items with high affinity should be stored close to each other).
 $$
  \min Z = \sum_{h \in I} \sum_{i \in I, i \neq h} \sum_{j \in J} \sum_{k \in J, k \neq j} d_{j,k} \cdot a_{h,i} \cdot y_{i,k} \cdot y_{h,j}
 $$
 Constraints:
+
 Each item is assigned to exactly one location:  
 $$
  \sum_{j \in K} y_{h,j} = 1, \quad \forall h \in I
@@ -76,6 +82,7 @@ $$
 $$
 
 Binary assignment variables:
+
 These constraints ensure that the decision variables are binary, meaning that an item is either assigned to a location (1) or not (0).
 $$
 y_{h,j} \in \{0,1\}, \quad \forall h \in I, \forall j \in K
@@ -98,6 +105,7 @@ For the rest of this post we will work with a small toy problem for which we can
 To quickly generate simple warehouse layouts I created a python program that takes as the input the dimensions of the warehouse in x, y and z dimensions. 
 
 It outputs a "Layout" object that contains a representation of the layout as a multidimensional numpy array. In the numpy array storage locations are encoded by the dummy value "-1" and walkable locations by "0". Later we can replace the dummy value of the storage location by the id of the product that is stored. The first and last row are cross-aisles that are used to access the aisles. Left and right to the aisles the storage locations are placed.
+
 The code snippet below shows the creation of a Layout object and the numpy representation of the simple warehouse we will use in this article. It can be called by calling the "grid" property of the Layout object.
 ```python
 warehouse = Layout(x=5, y=3, z=1) 
@@ -264,6 +272,7 @@ options: {
 
 
 We have shown that due to the NP-hard nature of SLAP, finding an optimal solution within a reasonable time frame is challenging, especially for large-scale problems. This complexity calls for the use of advanced optimization techniques such as heuristic methods, metaheuristic algorithms (e.g., genetic algorithms, simulated annealing), and approximation algorithms. These approaches can provide near-optimal solutions more efficiently compared to exact methods, which may be computationally prohibitive for large instances.
+
 Therefore in the next part of this series we will look into a genetic algorithm for solving the SLAP.
 
 # References
