@@ -42,7 +42,7 @@ Variables:
 $$
 y_{h,j} =
 \begin{cases} 
-1 & \text{if item} h \text{stored in location} j \\
+1 & \text{if item } h \text{stored in location } j \\
 0 & \text{else}
 \end{cases}
 $$
@@ -50,7 +50,7 @@ $$
 $$
 y_{i,k} =
 \begin{cases} 
-1 & \text{if item} i \text{stored in location} k \\
+1 & \text{if item } i \text{stored in location } k \\
 0 & \text{else}
 \end{cases}
 $$
