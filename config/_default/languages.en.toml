@@ -9,7 +9,7 @@ title = "J4n1k"
   rtl = false
   dateFormat = "2 January 2006"
   logo = "logo.png"
-  # secondaryLogo = "img/secondary-logo.png"
+  secondaryLogo = "logo.png"
   description = "j4n1k | Janik Bischoff"
   # copyright = "Copy, _right?_ :thinking_face:"
 
