@@ -22,10 +22,12 @@ The Storage Location Assignment Problem (SLAP) revolves around the allocation of
 
 Often it is aimed to place the products in such a way that products with high demand are placed in the most favorable positions, e.g. close to the input- and output-points where the pickers start end end their picking routes. Solving the SLAP for this objective comes down to sorting the products by historic demand and assigning the item with the highest demand to the storage location that is closest to the I/O-point. This is pretty straight forward and doesn't require advanced methods.
 
-In this post we want to consider a more challenging problem where we want to assign products in such a way that products that are frequently ordered are placed close to each other. 
+In this post we want to consider not only this simple problem but also a more challenging variant of the problem where we want to assign products in such a way that products that are frequently ordered are placed close to each other. 
 
 This problem shares similarities with the Quadratic Assignment Problem and is therefore NP-hard. We will see later what implications that brings for solving the problem. 
 
+### Order Frequency based SLAP
+Let's first consider the simple SLAP that is based on historic order frequency. We 
 Mathematically, the SLAP can be expressed as follows:
 
 **MIP formulation of the SLAP**
@@ -274,6 +276,8 @@ options: {
 We have shown that due to the NP-hard nature of SLAP, finding an optimal solution within a reasonable time frame is challenging, especially for large-scale problems. This complexity calls for the use of advanced optimization techniques such as heuristic methods, metaheuristic algorithms (e.g., genetic algorithms, simulated annealing), and approximation algorithms. These approaches can provide near-optimal solutions more efficiently compared to exact methods, which may be computationally prohibitive for large instances.
 
 Therefore in the next part of this series we will look into a genetic algorithm for solving the SLAP.
+
+{{< gist j4n1k 12a12d9a155b88d98416ba9e23aedcf0 >}}
 
 # References
 \[1\] R. de Koster, T. Le-Duc, and K. J. Roodbergen, “Design and control of warehouse order picking: A literature review,” European Journal of Operational Research, vol. 182, pp. 481–501, Oct. 2007.
