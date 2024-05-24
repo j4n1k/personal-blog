@@ -6,49 +6,49 @@ draft: false
 summary: "Explore the complexities of the Storage Location Assignment Problem (SLAP) and how Mixed Integer Linear Programming (MILP) can provide solutions for optimizing warehouse storage. Enhance your logistics strategy with this comprehensive guide."
 tags: ["optimization", "metaheuristics", "logistics", "SLAP", "MILP", "Supply Chain"]
 series: ["SLAP"]
-series_order: 2
+series_order: 4
 showViews: true
 ---
 {{< katex >}}
 The code for this series is available here:
 {{< github repo="j4n1k/beware" >}}
-## The Problem
+## Introduction
+This post is part of an ongoing series about different variants of the storage location assignment problem (SLAP). The SLAP is concerned with the allocation of products to storage locations. In the previous part we introduced the problem and solved a simple variant where we assign products in such a way that the distance to the picking depot for frequently ordered products is minimized.
 
-Warehouse managers face increasing pressures due to rising costs, evolving customer demands, shorter product lifecycles, and workforce turnover. Since **order picking** within a warehouse **accounts for up to 50%** of the expenses, reducing picking times is a critical lever to cut costs and streamline processes \[1\]. Shortening pick times can be achieved through **improved picking strategies** and **efficient assignment of items to storage locations**. In this post we want to explore how to enhance item-to-storage location assignments, starting with an overview of the underlying decision problem and diving into solutions.
-
-## Understanding the SLAP
-
-The Storage Location Assignment Problem (SLAP) revolves around the allocation of products to storage locations. It depends on various factors, including warehouse characteristics, product types, and demand profiles. 
-
-Often it is aimed to place the products in such a way that products with high demand are placed in the most favorable positions, e.g. close to the input- and output-points where the pickers start end end their picking routes. Solving the SLAP for this objective comes down to sorting the products by historic demand and assigning the item with the highest demand to the storage location that is closest to the I/O-point. This is pretty straight forward and doesn't require advanced methods.
-
-In this post we want to consider not only this simple problem but also a more challenging variant of the problem where we want to assign products in such a way that products that are frequently ordered are placed close to each other. 
+In this post we want to consider a more challenging variant of the problem where we want to assign products in such a way that products that are frequently ordered are placed close to each other. 
 
 This problem shares similarities with the Quadratic Assignment Problem and is therefore NP-hard. We will see later what implications that brings for solving the problem. 
 
-### Order Frequency based SLAP
-Let's first consider the simple SLAP that is based on historic order frequency. We 
+## Mathematical Model
+Again we first want to model the problem before we solve it. 
 Mathematically, the SLAP can be expressed as follows:
 
-**MIP formulation of the SLAP**
+**Sets:**
 
-Sets:
+A set of items is required that are placed at storage locations. We will denote this with "I":
 $$
 I = \text{Items}
 $$
 
+Further we need a set of storage locations, denoted by "J":
 $$
 J = \text{Storage Locations}
 $$
-Parameters:
+
+**Parameters:**
+
+The key information that we need is the affinity between each item. While there are more advanced methods to do this we will simply count how often each item has been order with each other item:
 $$
 a_{hi} = \text{Affinity between item h and i}
 $$
 
+Similarly we need a distance matrix that tells us the distance between each location:
 $$
-d{jk} = \text{Distance between storage location j and k}
+d_{jk} = \text{Distance between storage location j and k}
 $$
-Variables:
+
+**Variables:**
+The actual decision will be where to store each item. This is a binary decision and can either be "0" if an item is not stored at a certain location or "1" if it is. 
 $$
 y_{h,j} =
 \begin{cases} 
@@ -65,25 +65,26 @@ y_{i,k} =
 \end{cases}
 $$
 
-Objective function:
+**Objective function:**
 
-The objective is to minimize the total cost associated with storing items in the warehouse. This cost is typically related to the distance traveled to retrieve items that are frequently used together (i.e., items with high affinity should be stored close to each other).
+The objective is to minimize the total cost associated with storing items in the warehouse. For this problem the cost is related to the distance traveled to retrieve items that are frequently used together (i.e., items with high affinity should be stored close to each other).
 $$
  \min Z = \sum_{h \in I} \sum_{i \in I, i \neq h} \sum_{j \in J} \sum_{k \in J, k \neq j} d_{j,k} \cdot a_{h,i} \cdot y_{i,k} \cdot y_{h,j}
 $$
-Constraints:
 
-Each item is assigned to exactly one location:  
+**Constraints:**
+
+Finnaly, we have to consider some constraints.
+
+First, we have to make sure that each item is assigned to exactly one location:  
 $$
  \sum_{j \in K} y_{h,j} = 1, \quad \forall h \in I
 $$
 
-Each location holds exactly one item:
+Second, we need to enforce that each location holds exactly one item:
 $$
 \sum_{h \in I} y_{h,j} = 1, \quad \forall j \in K
 $$
-
-Binary assignment variables:
 
 These constraints ensure that the decision variables are binary, meaning that an item is either assigned to a location (1) or not (0).
 $$
@@ -103,6 +104,10 @@ For the rest of this post we will work with a small toy problem for which we can
 *   two racks
 *   the aisles can be accessed from top and bottom
 *   every rack has three storage locations resulting in six storage locations in total
+
+
+{{< load-plotly >}}
+{{< plotly json="warehouse_heatmap.json" height="400px" >}}
 ### Layout Generation
 To quickly generate simple warehouse layouts I created a python program that takes as the input the dimensions of the warehouse in x, y and z dimensions. 
 
@@ -124,7 +129,7 @@ warehouse.grid
        [-1.,  0., -1.],
        [ 0.,  0.,  0.]]
 ```
-The layout matrix is transformed into a graph representation that is used to calculate a distance matrix between each location. The matrix is saved to disc and can be loaded to reduce the runtime. 
+The layout matrix is transformed into a graph representation that is used to calculate a distance matrix between each location. The matrix is saved to disc and can be loaded to reduce the runtime. For a more detailed explaination please refer to part two of this series.
 
 ### Data Preperation
 Finding item-to-storage location assignments requires historical order data. From this data, information such as item order frequencies or item affinity is calculated. For our toy problem it is sufficient to generate the data ourselves. In reality order data can be retrieved from a WMS or online sources like Kaggle.
@@ -272,12 +277,9 @@ options: {
 }
 {{< /chart >}}
 
-
 We have shown that due to the NP-hard nature of SLAP, finding an optimal solution within a reasonable time frame is challenging, especially for large-scale problems. This complexity calls for the use of advanced optimization techniques such as heuristic methods, metaheuristic algorithms (e.g., genetic algorithms, simulated annealing), and approximation algorithms. These approaches can provide near-optimal solutions more efficiently compared to exact methods, which may be computationally prohibitive for large instances.
 
 Therefore in the next part of this series we will look into a genetic algorithm for solving the SLAP.
-
-{{< gist j4n1k 12a12d9a155b88d98416ba9e23aedcf0 >}}
 
 # References
 \[1\] R. de Koster, T. Le-Duc, and K. J. Roodbergen, “Design and control of warehouse order picking: A literature review,” European Journal of Operational Research, vol. 182, pp. 481–501, Oct. 2007.
