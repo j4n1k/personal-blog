@@ -92,6 +92,11 @@ Now we have 200 individuals with randomly assigned storage locations. How do we 
 
 First we need to code our fitness function to score a given individual. Recall the mathematical description from the last part:
 
+{{< figure
+    src="mat_model.png"
+    alt="Mathematical Model"
+    caption="Mathematical Model of the SLAP"
+    >}}
 
 For our fitness function we need all the sets and parameters. In the first part I showed you how to generate the distance between storage locations, order frequencies and how to calculate the product affinity. Please have a look at part one if you are interested in how to do it. For now we will simply assume to have this data available.
 
@@ -137,6 +142,12 @@ What we did here is called a rank selection: we basically take the two values wi
 
 ## Crossover
 What is better than a good individual? Two good individuals! So why not combine their genes? That’s exactly what the crossover step of a genetic algorithm does. It combines genetic information from the selected individuals in the previous step. This resembles the natural process of reproduction as this process creates offspring solutions that inherit traits from their parents. Again there are a lot of different approaches to this. We will stick with a simple version, the random point crossover. Like the name suggests we determine a random index in the individual and take the genes of the left side of this point from the first individual and the genes of the right side from the second individual. As this is maybe confusing I provided a illustration below:
+
+{{< figure
+    src="crossover.png"
+    alt="Crossover Vis"
+    caption="Crossover visualization [1]"
+    >}}
 
 This is very simple in python:
 
@@ -228,14 +239,29 @@ Let us first do a simple sanity check. We take again a small toy problem with si
 
 First let us look at the Gurobi solution. After a runtime of a few seconds we get an objective value of 810.
 
+{{< figure
+    src="obj_val.png"
+    alt="Objective Value Gurobi"
+    caption="Objective Value Gurobi"
+    >}}
 
 Let’s compare this to the fitness value of our individual after 500 generations:
 
+{{< figure
+    src="ga_fitness.png"
+    alt="GA fitness values"
+    caption="GA fitness values"
+    >}}
 
 Awesome, our algorithm seems to do the right thing! But where our approach really shines is the solution of large instances. So let us look at how our solution performs on a large problem. For that we generate a problem with 2964 storage locations.
 
-
 We let our algorithm run for 500 generations. This takes about 45 minutes. In the figure above you can see the fitness value for each episode. As expected the value gets minimized over time.
+
+{{< figure
+    src="ga_fitness_lineplot.png"
+    alt="GA fitness value over 500 generations"
+    caption="GA fitness value over 500 generations"
+    >}}
 
 Even if 45 minutes could still be considered as a rather long run time you have to compare this to the MILP solution: It took us nearly one hour to solve this problem for 11 items and storage locations!
 
@@ -254,3 +280,6 @@ In this post, we explored the application of genetic algorithms to the Storage L
 
 
 # References
+[1] https://www.tutorialspoint.com/genetic_algorithms/genetic_algorithms_crossover.htm
+
+[2] https://www.researchgate.net/publication/361467152_Local_Search_in_Selected_Crossover_Operators?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uIn19
