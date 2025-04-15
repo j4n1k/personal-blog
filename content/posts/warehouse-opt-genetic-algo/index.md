@@ -9,9 +9,16 @@ series: ["SLAP"]
 series_order: 5
 showViews: true
 ---
-{{< katex >}}
-The code for this series is available here:
-{{< github repo="j4n1k/beware" >}}
+
+<div class="newsletter-box">
+  <h3>Subscribe to our Newsletter</h3>
+  <!-- Paste your MailerLite embed code here -->
+  <form action="https://YOUR_MAILERLITE_FORM_URL" method="post" target="_blank">
+    <input type="email" name="fields[email]" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</div>
+
 ## Introduction
 In a previous blog post, we explored the Storage Location Assignment Problem, a common logistics challenge faced by businesses. We discussed its importance and how it can be solved using optimization tools like Gurobi. We saw that while it is possible to formulate the problem as a mixed integer problem and solve it optimally, this approach takes a lot of time to compute.
 
