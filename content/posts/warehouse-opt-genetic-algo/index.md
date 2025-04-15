@@ -239,21 +239,11 @@ Let us first do a simple sanity check. We take again a small toy problem with si
 
 First let us look at the Gurobi solution. After a runtime of a few seconds we get an objective value of 810.
 
-{{< figure
-    src="obj_val.png"
-    alt="Objective Value Gurobi"
-    caption="Objective Value Gurobi"
-    >}}
-
-Let’s compare this to the fitness value of our individual after 500 generations:
-
 ```
 Optimal Objective Value (Gurobi): 810.0
 ```
 
-Awesome, our algorithm seems to do the right thing! But where our approach really shines is the solution of large instances. So let us look at how our solution performs on a large problem. For that we generate a problem with 2964 storage locations.
-
-We let our algorithm run for 500 generations. This takes about 45 minutes. In the figure above you can see the fitness value for each episode. As expected the value gets minimized over time.
+Let’s compare this to the fitness value of our individual after 500 generations:
 
 ```
 Generation    Fitness
@@ -263,6 +253,17 @@ Generation    Fitness
 498           810.0
 499           810.0
 ```
+
+Awesome, our algorithm seems to do the right thing! But where our approach really shines is the solution of large instances. So let us look at how our solution performs on a large problem. For that we generate a problem with 2964 storage locations.
+
+We let our algorithm run for 500 generations. This takes about 45 minutes. In the figure above you can see the fitness value for each episode. As expected the value gets minimized over time.
+
+{{< figure
+    src="ga_fitness_lineplot.png"
+    alt="GA fitness value over 500 generations"
+    caption="GA fitness value over 500 generations"
+    >}}
+
 Even if 45 minutes could still be considered as a rather long run time you have to compare this to the MILP solution: It took us nearly one hour to solve this problem for 11 items and storage locations!
 
 ## Comparing Genetic Algorithms to Gurobi
