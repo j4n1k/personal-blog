@@ -3,7 +3,7 @@ title: "Solving the Storage Location Assignment Problem with Genetic Algorithms"
 description: "Discover how to optimize warehouse storage with our MILP formulation for the Storage Location Assignment Problem (SLAP). Learn about order picking strategies, mathematical modeling, and efficient item-to-storage assignments to reduce costs and improve logistics."
 date: 2025-04-15
 draft: false
-summary: "Explore the complexities of the Storage Location Assignment Problem (SLAP) and how Mixed Integer Linear Programming (MILP) can provide solutions for optimizing warehouse storage. Enhance your logistics strategy with this comprehensive guide."
+summary: ""
 tags: ["optimization", "metaheuristics", "logistics", "SLAP", "MILP", "Supply Chain" "Genetic Algorithm"]
 series: ["SLAP"]
 series_order: 5
@@ -36,8 +36,7 @@ For the Storage Location Assignment Problem, we need to adapt the problem to fit
 
 *   **Representation**: For genetic algorithms often a binary representation of the solution is choosen. For this problem we want to encode the solution a little bit different. A chromosome can represent a set of storage locations for products. Each gene corresponds to a product and encodes its assigned storage location.
 *   **Fitness Function**: The fitness function should evaluate how well a solution assigns storage locations while considering factors like distance, capacity, and cost. The good news is we already formulated a fitness function in our last part on MILP! We’ll simply use the objective function of the SLAP-MILP as the fitness function.
-{{< load-plotly >}}
-{{< plotly json="warehouse_heatmap.json" height="400px" >}}
+
 
 # Genetic Algorithm Implementation
 Now we have all building blocks to actually code our GA. Implementing a genetic algorithm involves several steps:
@@ -255,6 +254,3 @@ In this post, we explored the application of genetic algorithms to the Storage L
 
 
 # References
-\[1\] R. de Koster, T. Le-Duc, and K. J. Roodbergen, “Design and control of warehouse order picking: A literature review,” European Journal of Operational Research, vol. 182, pp. 481–501, Oct. 2007.
-
-\[2\] M. Kofler, A. Beham, S. Wagner, and M. Affenzeller, “Affinity based slotting in warehouses with dynamic order patterns,” in Topics in Intelligent Engineering and Informatics, pp. 123–143, Springer International Publishing, 2014.
