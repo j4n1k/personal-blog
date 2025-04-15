@@ -4,7 +4,7 @@ description: "Discover how to optimize warehouse storage with our MILP formulati
 date: 2025-04-15
 draft: false
 summary: ""
-tags: ["optimization", "metaheuristics", "logistics", "SLAP", "MILP", "Supply Chain" "Genetic Algorithm"]
+tags: ["optimization", "metaheuristics", "logistics", "SLAP", "MILP", "Supply Chain", "Genetic Algorithm"]
 series: ["SLAP"]
 series_order: 5
 showViews: true
