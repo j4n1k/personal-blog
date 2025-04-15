@@ -14,7 +14,6 @@ showViews: true
 <div class="ml-embedded" data-form="f7ggmw"></div>
 
 
-
 ## Introduction
 In a previous blog post, we explored the Storage Location Assignment Problem, a common logistics challenge faced by businesses. We discussed its importance and how it can be solved using optimization tools like Gurobi. We saw that while it is possible to formulate the problem as a mixed integer problem and solve it optimally, this approach takes a lot of time to compute.
 
