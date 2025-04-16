@@ -13,6 +13,8 @@ showViews: true
 # TLDR 
 In the logistics industry, optimizing warehouse layouts is crucial for efficiency. Our Python-based layout generator addresses the common challenge of lacking publicly available warehouse designs. By customizing dimensions and leveraging visualization tools, this generator produces both 2D and 3D graphical representations of warehouse layouts. Key functionalities include dynamic layout generation, storage location management, and the creation of an underlying graph for optimization. The tool simplifies the setup process, generates distance matrices, and provides accessible visualizations, aiding in effective logistics management. Explore the complete code and start optimizing your warehouse today.
 
+<div class="ml-embedded" data-form="f7ggmw"></div>
+
 # Introduction
 The world of logistics is full of interesting optimization challenges like the storage location assignment problem or the order picking problem. But to solve these problems we need input data. While we can relativly easy generate order data, there is a lack of publicly available warehouse layouts that are needed to generate distance matrices and to visualize storage assignments or picking routes.
 

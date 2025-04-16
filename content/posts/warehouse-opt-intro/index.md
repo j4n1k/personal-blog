@@ -8,6 +8,8 @@ series: ["SLAP"]
 series_order: 3
 ---
 {{< katex >}}
+
+<div class="ml-embedded" data-form="f7ggmw"></div>
 ## The Problem
 
 Warehouse managers face increasing pressures due to rising costs, evolving customer demands, shorter product lifecycles, and workforce turnover. Since **order picking** within a warehouse **accounts for up to 50%** of the expenses, reducing picking times is a critical lever to cut costs and streamline processes \[1\]. Shortening pick times can be achieved through **improved picking strategies** and **efficient assignment of items to storage locations**. In this post we want to explore how to enhance item-to-storage location assignments, starting with an overview of the underlying decision problem and diving into solutions.

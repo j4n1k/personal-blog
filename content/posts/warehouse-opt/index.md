@@ -12,6 +12,9 @@ showViews: true
 {{< katex >}}
 The code for this series is available here:
 {{< github repo="j4n1k/beware" >}}
+
+<div class="ml-embedded" data-form="f7ggmw"></div>
+
 ## Introduction
 This post is part of an ongoing series about different variants of the storage location assignment problem (SLAP). The SLAP is concerned with the allocation of products to storage locations. In the previous part we introduced the problem and solved a simple variant where we assign products in such a way that the distance to the picking depot for frequently ordered products is minimized.
 
