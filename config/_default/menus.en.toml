@@ -25,6 +25,11 @@
   pageRef = "resume"
   weight = 30
 
+[[main]]
+  name = "Publications"
+  pageRef = "publications"
+  weight = 30
+
 #[[main]]
 #  name = "example sub-menu 1"
 #  parent = "Parent"
